@@ -1,7 +1,21 @@
+import java.lang.reflect.Array;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class animePowerTracker {
+
+    public static Character findCharacter(ArrayList<Character> characterlist) {
+        Scanner input3 = new Scanner(System.in);
+        System.out.println("Enter the character you're searching: ");
+        String charName = input3.nextLine();
+        for (var entry : characterlist) {
+            if (charName.equals(entry.name)) {
+                System.out.println("Found");
+                return entry;
+            }
+        }
+        return null;
+    }
 
     public static class Character {
         public String name;
@@ -9,7 +23,7 @@ public class animePowerTracker {
         public Double speed;
         public Boolean isMainCharacter;
 
-        public void showCharacter () {
+        public void showCharacter() {
             System.out.println("====================");
             System.out.println("Name " + name);
             System.out.println("Power level: " + powerLevel);
@@ -19,11 +33,8 @@ public class animePowerTracker {
         }
     }
 
-    public static void main (String[] args) {
-
-
-        ArrayList <Character> characterlist = new ArrayList<>();
-
+    public static void main(String[] args) {
+        ArrayList<Character> characterlist = new ArrayList<>();
         Scanner input2 = new Scanner(System.in);
         int choice = -1;
 
@@ -36,49 +47,48 @@ public class animePowerTracker {
                     "5. Compare two characters' power levels\n" +
                     "6. Exit");
             choice = Integer.parseInt(input2.nextLine());
-           switch (choice) {
-               case 1:
-                   System.out.println("Name: ");
-                   String name1 = input2.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.println("Name: ");
+                    String name1 = input2.nextLine();
 
-                   Character c = new Character();
-                   c.name = name1;
-                   characterlist.add(c);
+                    Character c = new Character();
+                    c.name = name1;
+                    characterlist.add(c);
 
-                   System.out.println("Power level: ");
-                   Integer power = input2.nextInt();
-                   c.powerLevel = power;
-                   // Taking out the "Enter" buffer
-                   input2.nextLine();
+                    System.out.println("Power level: ");
+                    Integer power = input2.nextInt();
+                    c.powerLevel = power;
+                    // Taking out the "Enter" buffer
+                    input2.nextLine();
+                    System.out.println("Speed: ");
+                    double speed = input2.nextDouble();
+                    c.speed = speed;
 
-                   System.out.println("Speed: ");
-                   Double speed = input2.nextDouble();
-                   c.speed = speed;
-
-                   System.out.println("Is this the main character? ");
-                   Boolean maincharacter = input2.nextBoolean();
-                   c.isMainCharacter = maincharacter;
-                   break;
-               case 2:
-                   for (var entry: characterlist ) {
-                       entry.showCharacter();
-                   }
-                   break;
-               case 3:
-                   System.out.println("Enter the character you're searching: ");
-                   String charName = input2.nextLine();
-                   for (var entry: characterlist) {
-                       if (charName.equals(entry.name)) {
-                           System.out.println("Found");
-                       } else {
-                           System.out.println("Not found");
-                       }
-                   }
-                   break;
-               case 4:
+                    System.out.println("Is this the main character? ");
+                    boolean maincharacter = input2.nextBoolean();
+                    c.isMainCharacter = maincharacter;
+                    break;
+                case 2:
+                    for (var entry : characterlist) {
+                        entry.showCharacter();
+                    }
+                    break;
+                case 3:
+                    findCharacter(characterlist);
+                    break;
+                case 4:
+                    // It returns a character object
+                    Character x = findCharacter(characterlist);
+                    System.out.println("Enter how much power you wanna add: ");
+                    int powerlvl = input2.nextInt();
+                    x.powerLevel += powerlvl;
+                    System.out.println("Current powerlvl for" + x.name + "is" + x.powerLevel);
+                    break;
             }
         }
-        System.out.println("Power level: ");
     }
-
 }
+
+
+
