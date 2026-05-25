@@ -6,13 +6,13 @@ public class instances_static_fields {
 
         static int count = 0;
 
-        Book (String title, double price) {
+        public Book (String title, double price) {
             this.title = title;
             this.price = price;
             count++;
         }
 
-        void printInfo()  {
+        public void printInfo()  {
             System.out.println("Title: " + title);
             System.out.println("Price: " + price);
         }

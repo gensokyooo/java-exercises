@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import book.instances_static_fields.Book;
 
 public class personal_1 {
 
@@ -73,6 +74,9 @@ public class personal_1 {
                 break;
             }
         }
+
+        Book book1 = new Book("Dune" , 1999);
+        book1.printInfo();
 
     }
 }
