@@ -59,24 +59,7 @@ public class personal_1 {
         convertToCapital(name);
 
         // Searching inside the Arraylist
-        boolean x = animeFound (name, animelist);
-        removeAnime(name,x,animelist);
 
-        // Search by first letter
-        System.out.println ("Search by first letter: ");
-        Scanner input2 = new Scanner (System.in);
-        String letter = input2.nextLine();
-
-        for (int i = 0; i < animelist.size();i++) {
-            String anime = animelist.get(i);
-            if (!letter.isEmpty() && anime.charAt(0) == letter.charAt(0)) {
-                System.out.println(anime);
-                break;
-            }
-        }
-
-        Book book1 = new Book("Dune" , 1999);
-        book1.printInfo();
 
     }
 }
