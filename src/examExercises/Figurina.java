@@ -1,6 +1,6 @@
 package examExercises;
 
-public abstract class Figurina {
+public abstract class Figurina implements Comparable<Figurina>  {
     private int id;
 
     public Figurina (int id) {
