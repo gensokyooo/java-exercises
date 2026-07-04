@@ -1,12 +1,17 @@
 package examExercises;
 
 public class StudenteOrdinario implements Immatricolabile{
-    private int matricola;
+    private String matricola;
     private String nome_scuola;
 
-    public StudenteOrdinario (int matricola, String nome_scuola) {
+    public StudenteOrdinario (String matricola, String nome_scuola) {
         this.matricola = matricola;
         this.nome_scuola = nome_scuola;
+    }
+
+    @Override
+    public String getMatricola () {
+        return this.matricola;
     }
 
     @Override
@@ -17,7 +22,7 @@ public class StudenteOrdinario implements Immatricolabile{
 
         StudenteOrdinario other = (StudenteOrdinario) obj;
 
-        return this.matricola == other.matricola;
+        return this.matricola.equals(other.matricola);
 
     }
 

@@ -2,6 +2,6 @@ package examExercises;
 
 public interface Immatricolabile {
 
-    private String getMatricola ();
+    public String getMatricola ();
 
 }
