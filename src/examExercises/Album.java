@@ -34,6 +34,13 @@ public class Album {
             }
         }
 
+        if (x instanceof FigurinaSportiva) {
+            count_sportive++;
+        }
+        if (x instanceof FigurinaStorica) {
+            count_sportive++;
+        }
+
         if (count_sportive >= 100 || count_storica >= 50 || sameid ) {
             throw new IllegalStateException("Album non valido");
         }
@@ -52,18 +59,15 @@ public class Album {
 
         boolean sameName = this.nome.equals(other.getNome());
 
-        boolean sameFigurine = false;
-
+        boolean sameFigurine = true;
+        if (this.figurine.size() != other.figurine.size()) {
+            return false;
+        }
         for (int i = 0; i < this.figurine.size(); i++) {
-            if (this.figurine.size() != other.figurine.size()) {
-                // we return false cause if the number of figurines mismatches there's no point
-                return false;
-            }
             if (!(this.figurine.get(i).equals(other.figurine.get(i)))) {
                 // if even one figurine is different then it returns false
                 return false;
             }
-            sameFigurine = true;
         }
 
         return sameName && sameFigurine;
