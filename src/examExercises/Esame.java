@@ -2,7 +2,7 @@ package examExercises;
 
 import java.util.ArrayList;
 
-public class Esame {
+public class Esame   {
 
     private ArrayList <Studente> iscritti;
     private ArrayList <Verbalizzazione> verbalizzazione;
@@ -13,13 +13,9 @@ public class Esame {
 
     }
 
-    void iscrivi (Studente x) throws StudenteGiaIscrittoException {
-        boolean found = false;
+    public void iscrivi (Studente x) throws StudenteGiaIscrittoException {
         for (int i = 0; i < iscritti.size(); i++) {
             if (x.equals(iscritti.get(i))) {
-               found = true;
-            }
-            if (found) {
                 throw new StudenteGiaIscrittoException("Student already subbed");
             }
 
@@ -29,7 +25,7 @@ public class Esame {
 
     }
 
-    void verbalizza (Studente x, int grade) throws StudenteNonIscrittoException, StudenteGiaVerbalizzatoException  {
+    public void verbalizza (Studente x, int grade) throws StudenteNonIscrittoException, StudenteGiaVerbalizzatoException  {
         boolean found = false;
         for (int i = 0; i < iscritti.size(); i++) {
             if (x.equals(iscritti.get(i))) {
@@ -43,10 +39,12 @@ public class Esame {
         }
 
         for (int i = 0; i < verbalizzazione.size(); i++) {
-
+            if (x.equals(verbalizzazione.get(i).getStudente())) {
+                throw new StudenteGiaVerbalizzatoException ("Student already verbalised");
+            }
         }
 
-
+        verbalizzazione.add(new Verbalizzazione(x,grade));
 
     }
 
